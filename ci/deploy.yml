@@ -1,0 +1,9 @@
+---
+- name: Deploy Maven Artifact
+  hosts: local
+  become: yes
+  tasks:
+    - name: Copy the artifact to deployment directory
+      copy:
+        src: "/var/lib/jenkins/workspace/HelloMaven-CI/target/HelloMaven-1.0-SNAPSHOT.jar"
+        dest: "/opt/deployment/HelloMaven.jar"
