@@ -3,7 +3,13 @@
   hosts: local
   # become: yes
   tasks:
+    - name: Create deployment directory
+      file:
+        path: /var/lib/jenkins/workspace/HelloMaven-CI/deployment
+        state: directory
+        mode: '0755'
     - name: Copy the artifact to deployment directory
       copy:
         src: "/var/lib/jenkins/workspace/HelloMaven-CI/target/HelloMaven-1.0-SNAPSHOT.jar"
         dest: "/opt/deployment/HelloMaven.jar"
+        mode: '0755'
